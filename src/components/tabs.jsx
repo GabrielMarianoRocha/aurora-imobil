@@ -116,12 +116,10 @@ const ApartmentCardComponent = () => {
 };
 
 const tabs = [
-  { label: 'Home', content: <HomeCardComponent /> },
-  { label: 'Apartment', content: <ApartmentCardComponent /> },
-  { label: 'Office', content: <HomeCardComponent /> },
-  { label: 'Warehouse', content: <ApartmentCardComponent /> },
-  { label: 'Parking', content: <HomeCardComponent /> },
-  { label: 'Commercial', content: <ApartmentCardComponent /> },
+  { label: 'Casa', content: <HomeCardComponent /> },
+  { label: 'Apartamento', content: <ApartmentCardComponent /> },
+  { label: 'Comercial', content: <HomeCardComponent /> },
+  { label: 'Rural', content: <ApartmentCardComponent /> },
 ];
 
 const Tabs = () => {
@@ -136,7 +134,7 @@ const Tabs = () => {
             className={`${
               idx === activeTabIndex
                 ? 'border-b-2 border-orange-500 text-orange-500 '
-                : 'text-gray-500 hover:text-gray-700 dark:text-white dark:hover:text-gray-500'
+                : 'text-black hover:text-gray-700 dark:text-black dark:hover:text-black-500'
             } px-2 font-normal py-4 sm:px-6 sm:font-medium focus:outline-none ${
               idx === 3 && 'hidden sm:flex'
             }`}
