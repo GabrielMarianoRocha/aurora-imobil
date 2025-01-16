@@ -1,63 +1,39 @@
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Card from './card';
-import cardImageBg1 from '../assets/images/Image.png';
-import cardImageBg2 from '../assets/images/Image-2.png';
-import cardImageBg3 from '../assets/images/Image-3.png';
-import cardImageBg4 from '../assets/images/Image-4.png';
-import cardImageBg5 from '../assets/images/Image-5.png';
-import cardImageBg6 from '../assets/images/Image-6.png';
-import cardImageBg7 from '../assets/images/Image-7.png';
-import cardImageBg8 from '../assets/images/Image-8.png';
-import cardImageBg9 from '../assets/images/Image-9.png';
+import { IPropertie } from '../types/propertie';
+import * as api from '../services/api';
 
 const HomeCardComponent = () => {
+
+  const [properties, setProperties] = useState([]);
+
+  const getProperties = useCallback(async () => {
+    try {
+      const { data } = await api.getProperties();
+      setProperties(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [api]);
+
+  useEffect(() => {
+    getProperties();
+  }, [getProperties])
+
   return (
     <div className="flex flex-col sm:grid md:grid-cols-2 xl:grid-cols-3 gap-5 m-5 p-5 ">
-      <Card
-        imageSrc={cardImageBg1}
-        title="Modern Glass House"
-        price="$ 1,625,000"
-      />
-      <Card
-        imageSrc={cardImageBg2}
-        title="Modern Glass House"
-        price="$ 1,625,000"
-      />
-      <Card
-        imageSrc={cardImageBg3}
-        title="Modern Glass House"
-        price="$ 1,625,000"
-      />
-      <Card
-        imageSrc={cardImageBg4}
-        title="Modern Glass House"
-        price="$ 1,625,000"
-      />
-      <Card
-        imageSrc={cardImageBg5}
-        title="Modern Glass House"
-        price="$ 1,625,000"
-      />
-      <Card
-        imageSrc={cardImageBg6}
-        title="Modern Glass House"
-        price="$ 1,625,000"
-      />
-      <Card
-        imageSrc={cardImageBg7}
-        title="Modern Glass House"
-        price="$ 1,625,000"
-      />
-      <Card
-        imageSrc={cardImageBg8}
-        title="Modern Glass House"
-        price="$ 1,625,000"
-      />
-      <Card
-        imageSrc={cardImageBg9}
-        title="Modern Glass House"
-        price="$ 1,625,000"
-      />
+      {
+        properties.map((item) => {
+          return (
+            <Card 
+              title={item.title}
+              price={item.price}
+              pretension={item.pretension}
+              description={item.description}
+            />
+          )
+        })
+      }
     </div>
   );
 };
@@ -65,52 +41,7 @@ const HomeCardComponent = () => {
 const ApartmentCardComponent = () => {
   return (
     <div className="flex flex-col sm:grid md:grid-cols-2 xl:grid-cols-3 gap-5 m-5 p-5  ">
-      <Card
-        imageSrc={cardImageBg4}
-        title="Modern Glass House"
-        price="$ 2,500,000"
-      />
-      <Card
-        imageSrc={cardImageBg5}
-        title="Modern Glass House"
-        price="$ 2,500,000"
-      />
-      <Card
-        imageSrc={cardImageBg6}
-        title="Modern Glass House"
-        price="$ 2,500,000"
-      />
-      <Card
-        imageSrc={cardImageBg7}
-        title="Modern Glass House"
-        price="$ 2,500,000"
-      />
-      <Card
-        imageSrc={cardImageBg8}
-        title="Modern Glass House"
-        price="$ 2,500,000"
-      />
-      <Card
-        imageSrc={cardImageBg9}
-        title="Modern Glass House"
-        price="$ 2,500,000"
-      />
 
-      <Card
-        imageSrc={cardImageBg1}
-        title="Modern Glass House"
-        price="$ 2,500,000"
-      />
-      <Card
-        imageSrc={cardImageBg2}
-        title="Modern Glass House"
-        price="$ 2,500,000"
-      />
-      <Card
-        imageSrc={cardImageBg3}
-        title="Modern Glass House"
-        price="$ 2,500,000"
-      />
     </div>
   );
 };

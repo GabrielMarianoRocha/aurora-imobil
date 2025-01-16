@@ -31,7 +31,6 @@ const HomePage = () => {
   return (
     <div style={{ backgroundColor: 'white' }}>
       <Deals />
-      <Footer />
       {showButton && (
         <div className="fixed bottom-24 right-10 z-50">
           <button

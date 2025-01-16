@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import Logo from '../assets/images/logo-aurora.png';
 
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 
@@ -8,19 +9,14 @@ const Header = () => {
   const [header, setHeader] = useState(false);
   return (
     <div
-      style={{ background: '#f7b500' }}
+      style={{ background: 'black' }}
       className=" fixed top-0 left-0 w-full h-20 shadow-xl flex justify-between items-center z-40 ease-in duration-300"
     >
-      <div className="max-w-[1240px] m-5 flex justify-between items-center p-4">
+      {/* <div className="max-w-[1240px] m-5 flex justify-between items-center p-4">
         <Link href="/">
-          <h1
-            style={{ color: 'white' }}
-            className="py-2 text-2xl font-bold hover:text-orange-500"
-          >
-            Aurora Systems
-          </h1>
+          <Image width={80} src={Logo} />
         </Link>
-      </div>
+      </div> */}
 
       {/* Search */}
 
@@ -35,7 +31,7 @@ const Header = () => {
 
       <ul
         style={{ color: 'white' }}
-        className="text-sm font-bold hidden sm:flex
+        className="text-md hidden sm:flex
       "
       >
         <li className=" p-4 hover:text-orange-500">
